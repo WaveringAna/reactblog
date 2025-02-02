@@ -36,36 +36,6 @@ export const socialLinks: SocialLink[] = [
   },
 ]
 
-export const events: Event[] = [
-  {
-    id: "1",
-    date: "2025-05-28",
-    location: "Riga, Latvia",
-    title: "AI & the Future of Humanity",
-    description: "Public broadcast from the Riga Event",
-    imageUrl: "/placeholder.svg",
-    link: "#",
-  },
-  {
-    id: "2",
-    date: "2025-05-29",
-    location: "Tallinn, Estonia",
-    title: "AI & the Future of Humanity",
-    description: "Public broadcast from the United Arena",
-    imageUrl: "/placeholder.svg",
-    link: "#",
-  },
-  {
-    id: "3",
-    date: "2025-11-06",
-    location: "São Paulo, Brazil",
-    title: "HSM+ 2025",
-    description: "Keynote speaker at the 25th edition of HSM+ annual conference",
-    imageUrl: "/placeholder.svg",
-    link: "#",
-  },
-]
-
 export const books: Book[] = [
   {
     id: "1",
@@ -101,52 +71,6 @@ export const books: Book[] = [
     publishDate: "2021-06-15",
   }
 ]
-
-export const themes: Theme[] = [
-  {
-    id: "1",
-    title: "Power & Imagination",
-    imageUrl: "/placeholder.svg",
-    link: "#",
-    description: "Exploring human creativity and authority",
-  },
-  {
-    id: "2",
-    title: "Science & Religion",
-    imageUrl: "/placeholder.svg",
-    link: "#",
-    description: "The intersection of faith and reason",
-  },
-  {
-    id: "3",
-    title: "Ecology",
-    imageUrl: "/placeholder.svg",
-    link: "#",
-    description: "Human impact on the environment",
-  },
-  {
-    id: "4",
-    title: "Money & Politics",
-    imageUrl: "/placeholder.svg",
-    link: "#",
-    description: "Economic and political systems",
-  },
-  {
-    id: "5",
-    title: "Future",
-    imageUrl: "/placeholder.svg",
-    link: "#",
-    description: "Predictions and possibilities",
-  },
-  {
-    id: "6",
-    title: "Happiness",
-    imageUrl: "/placeholder.svg",
-    link: "#",
-    description: "The pursuit of well-being",
-  },
-]
-
 
 export const blogPosts: BlogPost[] = [
   {
