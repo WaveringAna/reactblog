@@ -8,8 +8,6 @@ export function Footer() {
           <div className="mb-4 md:mb-0">© {new Date().getFullYear()} Author Name. All rights reserved.</div>
           <div className="flex space-x-4">
             <Link href="/privacy">Privacy Policy</Link>
-            <Link href="/terms">Terms of Use</Link>
-            <Link href="/accessibility">Accessibility Statement</Link>
           </div>
         </div>
       </div>

@@ -9,12 +9,17 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-xl border bg-card text-card-foreground shadow",
+      "rounded-sm border border-primary/20 bg-card text-card-foreground shadow-md transition-all duration-300",
+      "hover:shadow-lg hover:border-secondary/30",
+      "before:content-[''] before:absolute before:top-0 before:left-0 before:w-3 before:h-3 before:border-t before:border-l before:border-secondary/40",
+      "after:content-[''] after:absolute after:bottom-0 after:right-0 after:w-3 after:h-3 after:border-b after:border-r after:border-secondary/40",
       className
     )}
     {...props}
   />
 ))
+
+
 Card.displayName = "Card"
 
 const CardHeader = React.forwardRef<

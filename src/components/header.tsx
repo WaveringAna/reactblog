@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { Libre_Baskerville } from 'next/font/google'
 import { Button } from "~/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "~/components/ui/sheet"
 import { Mail, Menu } from "lucide-react"
@@ -14,6 +15,12 @@ interface HeaderProps {
   author: Author
   socialLinks: SocialLink[]
 }
+
+const libreBaskerville = Libre_Baskerville({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-libre'
+})
 
 export function Header({ author, socialLinks }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
@@ -34,83 +41,40 @@ export function Header({ author, socialLinks }: HeaderProps) {
   ]
 
   return (
-    <header className="border-b">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
-          <Image
-            src={author.avatar || "/placeholder.svg"}
-            alt={author.name}
-            width={40}
-            height={40}
-            className="rounded-full"
-          />
-          <span className="text-xl font-semibold">{author.name}</span>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-4">
-          {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="text-gray-600 hover:text-gray-900">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Desktop Social Links */}
-        <div className="hidden md:flex items-center space-x-4">
-          {socialLinks.map((link) => {
-            const Icon = socialIcons[link.icon as keyof typeof socialIcons]
-            return (
-              <Link key={link.id} href={link.url} className="text-gray-600 hover:text-gray-900">
-                <Icon className="h-5 w-5" />
-              </Link>
-            )
-          })}
-          <Button variant="outline" size="sm">
-            EN
-          </Button>
-        </div>
-
-        {/* Mobile Menu */}
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild>
-            <Button variant="ghost" className="md:hidden">
-              <Menu className="h-6 w-6" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right">
-            <nav className="flex flex-col space-y-4 mt-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-gray-600 hover:text-gray-900"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-            <div className="flex space-x-4 mt-8">
-              {socialLinks.map((link) => {
-                const Icon = socialIcons[link.icon as keyof typeof socialIcons]
-                return (
-                  <Link
-                    key={link.id}
-                    href={link.url}
-                    className="text-gray-600 hover:text-gray-900"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Icon className="h-5 w-5" />
-                  </Link>
-                )
-              })}
+    <header className="border-b bg-white shadow-sm">
+      <div className="container mx-auto px-4 py-6">
+        <div className="flex items-center justify-between">
+          <Link href="/" className="flex items-center space-x-4">
+            <Image
+              src={author.avatar || "/placeholder.svg"}
+              alt={author.name}
+              width={60}
+              height={60}
+              className="rounded-full border-2 border-primary"
+            />
+            <div>
+              <h1 className="text-2xl font-serif font-bold text-gray-900">
+                {author.name}
+              </h1>
+              <p className="text-sm text-gray-600">
+                Occultist Author
+              </p>
             </div>
-            <Button variant="outline" size="sm" className="mt-4">
-              EN
-            </Button>
-          </SheetContent>
-        </Sheet>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-gray-600 hover:text-primary font-medium transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
       </div>
     </header>
   )

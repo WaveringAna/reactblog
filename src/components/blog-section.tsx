@@ -9,9 +9,9 @@ interface BlogSectionProps {
 
 export function BlogSection({ posts }: BlogSectionProps) {
     return (
-        <section className="py-16 bg-gray-50">
+        <section className=" bg-gray-50 pt-16">
             <div className="container mx-auto px-4">
-                <h2 className="text-2xl font-semibold mb-8">BLOG</h2>
+                <h2 className="text-2xl font-semibold mb-8 text-center">BLOG</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {posts.map((post) => (
                         <Link key={post.id} href={`/blog/${post.slug}`}>
