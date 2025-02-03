@@ -79,6 +79,7 @@ export const blogPosts: BlogPost[] = [
     title: "The Future of AI: Friend or Foe?",
     excerpt:
       "As artificial intelligence continues to evolve at an unprecedented pace, we must ask ourselves: are we creating a utopian assistant or an existential threat?",
+    content: "This is a blog about stuff.",
     date: "2024-01-20",
     imageUrl: "/placeholder.svg",
     slug: "future-of-ai",
@@ -89,6 +90,7 @@ export const blogPosts: BlogPost[] = [
     title: "Redefining Human Nature in the Digital Age",
     excerpt:
       "With the lines between physical and digital realities blurring, how do we maintain our humanity in an increasingly virtual world?",
+    content: "This is a blog about stuff.",
     date: "2024-01-15",
     imageUrl: "/placeholder.svg",
     slug: "human-nature-digital-age",
@@ -99,6 +101,7 @@ export const blogPosts: BlogPost[] = [
     title: "The Myth of Free Will in the Age of Algorithms",
     excerpt:
       "As big data and machine learning shape our choices, is the concept of free will becoming obsolete? Let's explore the ethical implications.",
+    content: "This is a blog about stuff.",
     date: "2024-01-10",
     imageUrl: "/placeholder.svg",
     slug: "free-will-algorithms",
@@ -109,6 +112,7 @@ export const blogPosts: BlogPost[] = [
     title: "Biotechnology: Rewriting the Book of Life",
     excerpt:
       "From CRISPR to synthetic biology, we're on the brink of redefining what it means to be human. Are we ready for the consequences?",
+    content: "This is a blog about stuff.",
     date: "2024-01-05",
     imageUrl: "/placeholder.svg",
     slug: "biotechnology-rewriting-life",

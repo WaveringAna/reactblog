@@ -50,6 +50,10 @@ export default function SandboxPage() {
                             id: index + 1,
                             title: post.title,
                             authorId: 1,
+                            excerpt: post.excerpt,
+                            content: post.content,
+                            created_at: post.date,
+                            updated_at: post.date,
                         }))
                     )
 

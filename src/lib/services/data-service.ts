@@ -45,7 +45,8 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   return data.map(post => ({
     id: post.id.toString(),
     title: post.title ?? '',
-    excerpt: post.content ?? '',
+    excerpt: post.excerpt ?? '',
+    content: post.content ?? '',
     date: post.created_at ?? '',
     imageUrl: '',
     slug: '',
