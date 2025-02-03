@@ -24,6 +24,8 @@ export interface Book {
   link: string
   description: string
   publishDate: string
+  content: string
+  author: string
 }
 
 export interface Theme {

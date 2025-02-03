@@ -35,6 +35,8 @@ export const books = createTable("books", {
   link: text("link"),
   description: text("description"),
   publishDate: text("publishDate"),
+  content: text("content"),
+  author: text("author"),
 });
 
 export const posts = createTable("posts", {
@@ -42,7 +44,7 @@ export const posts = createTable("posts", {
   title: text("title"),
   excerpt: text("excerpt"),
   content: text("content"),
-  authorId: int("authorId").references(() => authors.id),
+  author: text("author"),
   created_at: text("created_at").default(sql`CURRENT_TIMESTAMP`),
   updated_at: text("updated_at").default(sql`CURRENT_TIMESTAMP`),
 });

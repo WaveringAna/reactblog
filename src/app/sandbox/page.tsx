@@ -15,8 +15,8 @@ export default function SandboxPage() {
                     console.log("running on server, seeding data");
 
                     const authorsInsert = await db.insert(authors).values(
-                        MockAuthors.map((author: Author, index: number) => ({
-                            id: index + 1,
+                        MockAuthors.map((author: Author) => ({
+                            id: 1,
                             name: author.name,
                             bio: author.bio,
                             avatar: author.avatar,
@@ -42,6 +42,8 @@ export default function SandboxPage() {
                             link: book.link,
                             description: book.description,
                             publishDate: book.publishDate,
+                            content: book.content,
+                            author: book.author,
                         }))
                     )
 
@@ -49,7 +51,7 @@ export default function SandboxPage() {
                         BlogPosts.map((post, index) => ({
                             id: index + 1,
                             title: post.title,
-                            authorId: 1,
+                            author: post.author,
                             excerpt: post.excerpt,
                             content: post.content,
                             created_at: post.date,

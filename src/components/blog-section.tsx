@@ -14,7 +14,7 @@ export function BlogSection({ posts }: BlogSectionProps) {
                 <h2 className="text-2xl font-semibold mb-8 text-center">BLOG</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {posts.map((post) => (
-                        <Link key={post.id} href={`/blog/${post.slug}`}>
+                        <Link key={post.id} href={`/posts/${post.slug}`}>
                             <Card className="h-full">
                                 <CardContent className="p-0">
                                     <div className="relative h-48">

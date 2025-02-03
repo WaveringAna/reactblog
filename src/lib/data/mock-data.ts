@@ -45,6 +45,8 @@ export const books: Book[] = [
     link: "#",
     description: "China, Silicon Valley, and the New World Order",
     publishDate: "2018-09-25",
+    content: "This is a book about stuff.",
+    author: "Aaman Lamba"
   },
   // generate more mock books here
   {
@@ -54,6 +56,8 @@ export const books: Book[] = [
     link: "#",
     description: "A Brief History of Tomorrow",
     publishDate: "2016-09-08",
+    content: "This is a book about stuff.",
+    author: "Aaman Lamba"
   },
   {
     id: "3",
@@ -62,6 +66,8 @@ export const books: Book[] = [
     link: "#",
     description: "21 Lessons for the 21st Century",
     publishDate: "2018-08-30",
+    content: "This is a book about stuff.",
+    author: "Aaman Lamba"
   },
   {
     id: "4",
@@ -70,6 +76,8 @@ export const books: Book[] = [
     link: "#",
     description: "The Story of Human Finance",
     publishDate: "2021-06-15",
+    content: "This is a book about stuff.",
+    author: "Aaman Lamba"
   }
 ]
 
@@ -83,7 +91,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-01-20",
     imageUrl: "/placeholder.svg",
     slug: "future-of-ai",
-    author: "Author Name",
+    author: "Aaman Lamba",
   },
   {
     id: "2",
@@ -94,7 +102,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-01-15",
     imageUrl: "/placeholder.svg",
     slug: "human-nature-digital-age",
-    author: "Author Name",
+    author: "Aaman Lamba",
   },
   {
     id: "3",
@@ -105,7 +113,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-01-10",
     imageUrl: "/placeholder.svg",
     slug: "free-will-algorithms",
-    author: "Author Name",
+    author: "Aaman Lamba",
   },
   {
     id: "4",
@@ -116,6 +124,6 @@ export const blogPosts: BlogPost[] = [
     date: "2024-01-05",
     imageUrl: "/placeholder.svg",
     slug: "biotechnology-rewriting-life",
-    author: "Author Name",
+    author: "Aaman Lamba",
   },
 ]

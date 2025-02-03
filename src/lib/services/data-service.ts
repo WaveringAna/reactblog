@@ -36,7 +36,9 @@ export async function getBooks(): Promise<Book[]> {
     imageUrl: book.imageUrl ?? '',
     link: book.link ?? '',
     description: book.description ?? '',
-    publishDate: book.publishDate ?? ''
+    publishDate: book.publishDate ?? '',
+    content: book.content ?? '',
+    author: book.author ?? ''
   }))
 }
 
@@ -50,6 +52,6 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     date: post.created_at ?? '',
     imageUrl: '',
     slug: '',
-    author: post.authorId?.toString() ?? ''
+    author: post.author ?? ''
   }))
 }

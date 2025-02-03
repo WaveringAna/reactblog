@@ -37,7 +37,7 @@ export function Header({ author, socialLinks }: HeaderProps) {
   const navItems = [
     { href: "/about", label: "About" },
     { href: "/books", label: "Books" },
-    { href: "/blog", label: "Blog" },
+    { href: "/posts", label: "Blog" },
   ]
 
   return (
