@@ -12,19 +12,36 @@ import { index, int, sqliteTableCreator, text } from "drizzle-orm/sqlite-core";
  */
 export const createTable = sqliteTableCreator((name) => `reactblog_${name}`);
 
-export const posts = createTable(
-  "post",
-  {
-    id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
-    name: text("name", { length: 256 }),
-    createdAt: int("created_at", { mode: "timestamp" })
-      .default(sql`(unixepoch())`)
-      .notNull(),
-    updatedAt: int("updated_at", { mode: "timestamp" }).$onUpdate(
-      () => new Date()
-    ),
-  },
-  (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  })
-);
+export const authors = createTable("author", {
+  id: int("id").primaryKey(),
+  name: text("name"),
+  bio: text("bio"),
+  avatar: text("avatar"),
+  quote: text("quote"),
+  heroImage: text("heroImage"),
+});
+
+export const socialLinks = createTable("socialLinks", {
+  id: int("id").primaryKey(),
+  platform: text("platform"),
+  url: text("url"),
+  icon: text("icon"),
+});
+
+export const books = createTable("books", {
+  id: int("id").primaryKey(),
+  title: text("title"),
+  imageUrl: text("imageUrl"),
+  link: text("link"),
+  description: text("description"),
+  publishDate: text("publishDate"),
+});
+
+export const posts = createTable("posts", {
+  id: int("id").primaryKey(),
+  title: text("title"),
+  content: text("content"),
+  authorId: int("authorId").references(() => authors.id),
+  created_at: text("created_at").default(sql`CURRENT_TIMESTAMP`),
+  updated_at: text("updated_at").default(sql`CURRENT_TIMESTAMP`),
+});

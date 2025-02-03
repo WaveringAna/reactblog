@@ -1,9 +1,9 @@
 import type { Book, SocialLink, Author, BlogPost } from "~/types"
-import { author, socialLinks, books, blogPosts } from "../data/mock-data"
+import { authors, socialLinks, books, blogPosts } from "../data/mock-data"
 
-export async function getAuthor(): Promise<Author> {
+export async function getAuthor(): Promise<Author[]> {
   // In the future, replace with API call
-  return author
+  return authors
 }
 
 export async function getSocialLinks(): Promise<SocialLink[]> {

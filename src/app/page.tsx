@@ -5,7 +5,13 @@ import { BlogSection } from "~/components/blog-section"
 import { blogPosts } from "~/lib/data/mock-data"
 
 export default async function Home() {
-  const author = await getAuthor()
+  const authors = await getAuthor()
+  const author = authors[0]
+
+  if (!author) {
+    throw new Error('No author found')
+  }
+
   const books = await getBooks()
 
   return (

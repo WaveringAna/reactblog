@@ -1,13 +1,14 @@
-import type { Event, Book, Theme, SocialLink, Author, BlogPost } from "~/types"
+import type { Book, SocialLink, Author, BlogPost } from "~/types"
 
-export const author: Author = {
+export const authors: Author[] = [{
+  id: "1",
   name: "Aaman Lamba",
   bio: "Distinguished author and historian",
   avatar: "/placeholder.svg",
   quote: "",
   heroImage:
     "/placeholder.svg",
-}
+}]
 
 export const socialLinks: SocialLink[] = [
   {

@@ -22,7 +22,11 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const author = await getAuthor()
+  const authors = await getAuthor()
+  const author = authors[0]
+  if (!author) {
+    throw new Error('No author found')
+  }
   const socialLinks = await getSocialLinks()
 
   return (
