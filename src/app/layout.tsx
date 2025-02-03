@@ -6,6 +6,8 @@ import { Footer } from "~/components/footer"
 import { getAuthor, getSocialLinks } from "~/lib/services/data-service"
 import React from 'react'; // Added import for React
 
+import { ClerkProvider } from "@clerk/nextjs"
+
 const sourceSansPro = Source_Sans_3({
   weight: ['400', '600'],
   subsets: ['latin'],
@@ -30,12 +32,14 @@ export default async function RootLayout({
   const socialLinks = await getSocialLinks()
 
   return (
-    <html lang="en">
-      <body className={sourceSansPro.className}>
-        <Header author={author} socialLinks={socialLinks} />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={sourceSansPro.className}>
+          <Header author={author} socialLinks={socialLinks} />
+          <main>{children}</main>
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }

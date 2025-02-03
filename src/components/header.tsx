@@ -10,6 +10,7 @@ import { Mail, Menu } from "lucide-react"
 import { SiBluesky as Bluesky, SiFacebook as Facebook, SiInstagram as Instagram } from "@icons-pack/react-simple-icons"
 import { Twitter } from "lucide-react"
 import type { Author, SocialLink } from "~/types"
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs"
 
 interface HeaderProps {
   author: Author
@@ -72,6 +73,12 @@ export function Header({ author, socialLinks }: HeaderProps) {
                 {item.label}
               </Link>
             ))}
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </nav>
         </div>
       </div>
