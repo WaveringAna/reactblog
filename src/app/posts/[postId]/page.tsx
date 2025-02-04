@@ -5,12 +5,13 @@ import { ArrowLeft } from "lucide-react"
 import { notFound } from "next/navigation"
 
 interface PostPageProps {
-    params: {
+    params: Promise<{
         postId: string
-    }
+    }>
 }
 
-export default async function PostPage({ params }: PostPageProps) {
+export default async function PostPage(props: PostPageProps) {
+    const params = await props.params;
     const [posts, postId] = await Promise.all([getBlogPosts(), params.postId])
     const post = posts.find((p) => p.id === postId)
     console.log(post)
