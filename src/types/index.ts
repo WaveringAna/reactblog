@@ -62,3 +62,10 @@ export interface BlogPost {
   slug: string
   author: string
 }
+
+export interface Image {
+  id: string
+  imagePath: string
+  createdAt: string
+  updatedAt: string
+}

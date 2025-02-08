@@ -48,3 +48,10 @@ export const posts = createTable("posts", {
   created_at: text("created_at").default(sql`CURRENT_TIMESTAMP`),
   updated_at: text("updated_at").default(sql`CURRENT_TIMESTAMP`),
 });
+
+export const images = createTable("images", {
+  id: int("id").primaryKey(),
+  imagePath: text("imagePath"),
+  createdAt: text("createdAt").default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updatedAt").default(sql`CURRENT_TIMESTAMP`),
+});

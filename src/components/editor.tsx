@@ -6,11 +6,11 @@ import type { DefaultBlockSchema, PartialBlock } from "@blocknote/core";
 import "@blocknote/shadcn/style.css";
 
 interface EditorProps {
-    onChange?: (value: string) => void;
+    onChange?: () => void;
     initialContent?: string;
 }
 
-export default function Editor({ initialContent }: EditorProps) {
+export default function Editor({ initialContent, onChange }: EditorProps) {
     // Creates a new editor instance.
     const editor = useCreateBlockNote({
         initialContent: initialContent ? JSON.parse(initialContent) as PartialBlock<DefaultBlockSchema>[] : undefined,
@@ -20,12 +20,11 @@ export default function Editor({ initialContent }: EditorProps) {
     return (
         <BlockNoteView
             editor={editor}
-            shadCNComponents={
-                {
-                    // Pass modified ShadCN components from your project here.
-                    // Otherwise, the default ShadCN components will be used.
-                }
-            }
+            onChange={onChange}
+            shadCNComponents={{
+                // Pass modified ShadCN components from your project here.
+                // Otherwise, the default ShadCN components will be used.
+            }}
             theme="light"
             className="min-h-[500px]"
             style={{

@@ -4,17 +4,26 @@ import { Editor } from "~/components/DynamicEditor";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+interface PostResponse {
+    success: boolean;
+    data?: string;
+    error?: string;
+}
+
 export default function PostCreatorPage() {
-    const router = useRouter();
+    // New state hooks
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const router = useRouter();
 
+    // Callback to update editor content (blocknote)
     const handleChange = (newContent: string) => {
         setContent(newContent);
     };
 
+    // Submit handler to call the API
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -24,24 +33,20 @@ export default function PostCreatorPage() {
             const response = await fetch("/api/posts", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ title, content }),
+                body: JSON.stringify({ title, content })
             });
-
+            const data = await response.json() as PostResponse;
             if (!response.ok) {
-                const data = (await response.json()) as { error?: string };
-                throw new Error(data.error ?? "Failed to create post");
+                setError(data.error ?? "Something went wrong");
+            } else {
+                router.push("/");
             }
-
-            // Optionally redirect to the new post or posts list
-            router.push("/posts"); // Adjust the route as needed
-            router.refresh(); // Refresh the current route's server components
         } catch (err) {
-            setError(err instanceof Error ? err.message : "An error occurred");
-        } finally {
-            setIsSubmitting(false);
+            setError(err instanceof Error ? err.message : String(err));
         }
+        setIsSubmitting(false);
     };
 
     return (
@@ -62,10 +67,11 @@ export default function PostCreatorPage() {
                         className="w-full p-2 border rounded-lg"
                         disabled={isSubmitting}
                         name="title"
+                        id="title"
                     />
                 </div>
                 <div className="min-h-[500px]" style={{ backgroundColor: "#fff" }}>
-                    <Editor onChange={handleChange} />
+                    <Editor onChange={() => { /*DoNothing*/ }} />
                 </div>
                 <button
                     type="submit"

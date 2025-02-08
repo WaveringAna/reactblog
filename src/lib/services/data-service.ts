@@ -1,6 +1,6 @@
-import type { Book, SocialLink, Author, BlogPost } from "~/types"
+import type { Book, SocialLink, Author, BlogPost, Image } from "~/types"
 //import { authors, socialLinks, books, blogPosts } from "../data/mock-data"
-import { authors, socialLinks, books, posts } from "~/server/db/schema"
+import { authors, socialLinks, books, posts, images } from "~/server/db/schema"
 import { db } from "~/server/db"
 
 export async function getAuthor(): Promise<Author[]> {
@@ -53,5 +53,15 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     imageUrl: '',
     slug: '',
     author: post.author ?? ''
+  }))
+}
+
+export async function getImages(): Promise<Image[]> {
+  const data = await db.select().from(images)
+  return data.map(image => ({
+    id: image.id.toString(),
+    imagePath: image.imagePath ?? '',
+    createdAt: image.createdAt ?? '',
+    updatedAt: image.updatedAt ?? ''
   }))
 }
