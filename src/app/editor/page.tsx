@@ -2,22 +2,23 @@
 
 import { Editor } from "~/components/DynamicEditor";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+//import { useRouter } from "next/navigation";
 
-interface PostResponse {
+/*interface PostResponse {
     success: boolean;
     data?: string;
     error?: string;
-}
+}*/
 
 export default function PostCreatorPage() {
     // New state hooks
     const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
-    const [error, setError] = useState("");
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const router = useRouter();
+    //const [content, setContent] = useState("");
+    const [error, /*setError*/] = useState("");
+    const [isSubmitting, /*setIsSubmitting*/] = useState(false);
+    //const router = useRouter();
 
+    /*
     // Callback to update editor content (blocknote)
     const handleChange = (newContent: string) => {
         setContent(newContent);
@@ -41,13 +42,13 @@ export default function PostCreatorPage() {
             if (!response.ok) {
                 setError(data.error ?? "Something went wrong");
             } else {
-                router.push("/");
+                router.push("/blog");
             }
         } catch (err) {
             setError(err instanceof Error ? err.message : String(err));
         }
         setIsSubmitting(false);
-    };
+    };*/
 
     return (
         <div className="max-w-4xl mx-auto p-6">
@@ -57,7 +58,7 @@ export default function PostCreatorPage() {
                     {error}
                 </div>
             )}
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form /*onSubmit={handleSubmit}*/ className="space-y-4">
                 <div>
                     <input
                         type="text"
