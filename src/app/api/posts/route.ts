@@ -24,9 +24,10 @@ export async function POST(request: Request) {
 
         const result = await db.insert(posts).values({
             title,
-            content, // store the raw HTML
+            content: plainText, // store the plain text
             excerpt: plainText.slice(0, 100), // generate excerpt from text-only content
             author: "Aaman Lamba",
+            html: content, // store the raw HTML
             created_at: new Date().toDateString(),
             updated_at: new Date().toDateString(),
         });

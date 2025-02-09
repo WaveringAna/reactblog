@@ -10,6 +10,14 @@ const config = {
         ignoreDuringBuilds: true,
     },
     reactStrictMode: false,
+    images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "plus.unsplash.com",
+            },
+        ]
+    }
 };
 
 export default config;

@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+import TextareaAutoSize from "react-textarea-autosize"
 import { Editor } from "~/components/DynamicEditor";
+import Cover from "~/components/cover";
 import type { BlockNoteEditor } from "@blocknote/core";
 import { useRouter } from "next/navigation";
 
@@ -14,12 +16,21 @@ interface PostResponse {
 export default function PostCreatorPage() {
     const [title, setTitle] = useState("");
     const [error, setError] = useState("");
+    const [coverUrl, setCoverUrl] = useState<string>(
+
+    )
     const [isSubmitting, setIsSubmitting] = useState(false);
     const router = useRouter();
     const editorRef = useRef<BlockNoteEditor>(null);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        const submitter = (e.nativeEvent as SubmitEvent).submitter as HTMLButtonElement | null;
+        if (!submitter || submitter.name !== 'submit-post') {
+            return;
+        }
+
         setIsSubmitting(true);
         setError("");
         try {
@@ -36,7 +47,7 @@ export default function PostCreatorPage() {
             if (!response.ok) {
                 setError(data.error ?? "Something went wrong");
             } else {
-                router.push("/blog");
+                router.push("/posts");
                 console.log("Success", data);
             }
         } catch (err) {
@@ -47,7 +58,7 @@ export default function PostCreatorPage() {
 
     return (
         <div className="max-w-4xl mx-auto p-6">
-            <h1 className="text-2xl font-bold mb-6">Create New Post</h1>
+            <Cover url="https://plus.unsplash.com/premium_photo-1676496046182-356a6a0ed002?q=80&w=3876&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
             {error && (
                 <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
                     {error}
@@ -55,16 +66,13 @@ export default function PostCreatorPage() {
             )}
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                    <input
-                        type="text"
-                        value={title}
+                    <TextareaAutoSize
+                        className="w-full resize-none appearance-none overflow-hidden
+                        bg-transparent text-5xl font-bold focus:outline;"
+                        placeholder="Untitled"
                         onChange={(e) => setTitle(e.target.value)}
-                        placeholder="Post title"
-                        className="w-full p-2 border rounded-lg"
-                        disabled={isSubmitting}
                         name="title"
-                        id="title"
-                    />
+                        id="title" />
                 </div>
                 <div className="min-h-[500px]" style={{ backgroundColor: "#fff" }}>
                     <Editor ref={editorRef} onChange={() => { /*DoNothing*/ }} />
@@ -84,6 +92,7 @@ export default function PostCreatorPage() {
                 </button>
                 <button
                     type="submit"
+                    name="submit-post"
                     className="px-4 py-2 bg-blue-500 text-white rounded-lg disabled:opacity-50"
                     disabled={isSubmitting}
                 >
