@@ -52,7 +52,8 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     date: post.created_at ?? '',
     imageUrl: '',
     slug: '',
-    author: post.author ?? ''
+    author: post.author ?? '',
+    html: post.html ?? ''
   }))
 }
 

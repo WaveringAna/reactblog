@@ -19,10 +19,13 @@ export async function POST(request: Request) {
             );
         }
 
+        // Strip HTML tags to extract plain text
+        const plainText = content.replace(/<[^>]*>/g, '');
+
         const result = await db.insert(posts).values({
             title,
-            content,
-            excerpt: content.slice(0, 100),
+            content, // store the raw HTML
+            excerpt: plainText.slice(0, 100), // generate excerpt from text-only content
             author: "Aaman Lamba",
             created_at: new Date().toDateString(),
             updated_at: new Date().toDateString(),

@@ -22,6 +22,7 @@
   "dependencies": {
     "@blocknote/mantine": "^0.23.1",
     "@blocknote/react": "^0.23.1",
+    "@blocknote/server-util": "^0.23.2",
     "@blocknote/shadcn": "^0.23.1",
     "@clerk/nextjs": "^6.10.6",
     "@icons-pack/react-simple-icons": "^11.2.0",

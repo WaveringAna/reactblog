@@ -1,4 +1,5 @@
 "use client";
+import React, { forwardRef, useImperativeHandle } from "react";
 import "@blocknote/core/fonts/inter.css";
 import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/shadcn";
@@ -10,7 +11,8 @@ interface EditorProps {
     initialContent?: string;
 }
 
-export default function Editor({ initialContent, onChange }: EditorProps) {
+const Editor = forwardRef((props: EditorProps, ref) => {
+    const { initialContent, onChange } = props;
     interface ImageUploadResponse {
         success: boolean;
         data: {
@@ -18,7 +20,7 @@ export default function Editor({ initialContent, onChange }: EditorProps) {
         };
     }
 
-    const imageUpload = async function (image: File) {
+    const imageUpload = async (image: File) => {
         console.log(image)
         const formData = new FormData();
         formData.append('file', image);
@@ -46,6 +48,9 @@ export default function Editor({ initialContent, onChange }: EditorProps) {
         },
     });
 
+    // Expose editor instance through the ref.
+    useImperativeHandle(ref, () => editor);
+
     // Renders the editor instance using a React component.
     return (
         <BlockNoteView
@@ -65,4 +70,8 @@ export default function Editor({ initialContent, onChange }: EditorProps) {
         >
         </BlockNoteView>
     );
-}
+});
+
+Editor.displayName = "Editor";
+
+export default Editor;

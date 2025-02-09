@@ -92,6 +92,7 @@ export const blogPosts: BlogPost[] = [
     imageUrl: "/placeholder.svg",
     slug: "future-of-ai",
     author: "Aaman Lamba",
+    html: '<div class="bn-block-group" data-node-type="blockGroup"><div class="bn-block-outer" data-node-type="blockOuter"><div class="bn-block" data-node-type="blockContainer"><div class="bn-block-content" data-content-type="paragraph"><p class="bn-inline-content">This is a blog about stuff.</p></div></div></div></div>',
   },
   {
     id: "2",
@@ -103,6 +104,7 @@ export const blogPosts: BlogPost[] = [
     imageUrl: "/placeholder.svg",
     slug: "human-nature-digital-age",
     author: "Aaman Lamba",
+    html: '<div class="bn-block-group" data-node-type="blockGroup"><div class="bn-block-outer" data-node-type="blockOuter"><div class="bn-block" data-node-type="blockContainer"><div class="bn-block-content" data-content-type="paragraph"><p class="bn-inline-content">This is a blog about stuff.</p></div></div></div></div>',
   },
   {
     id: "3",
@@ -114,6 +116,7 @@ export const blogPosts: BlogPost[] = [
     imageUrl: "/placeholder.svg",
     slug: "free-will-algorithms",
     author: "Aaman Lamba",
+    html: '<div class="bn-block-group" data-node-type="blockGroup"><div class="bn-block-outer" data-node-type="blockOuter"><div class="bn-block" data-node-type="blockContainer"><div class="bn-block-content" data-content-type="paragraph"><p class="bn-inline-content">This is a blog about stuff.</p></div></div></div></div>',
   },
   {
     id: "4",
@@ -125,5 +128,6 @@ export const blogPosts: BlogPost[] = [
     imageUrl: "/placeholder.svg",
     slug: "biotechnology-rewriting-life",
     author: "Aaman Lamba",
+    html: '<div class="bn-block-group" data-node-type="blockGroup"><div class="bn-block-outer" data-node-type="blockOuter"><div class="bn-block" data-node-type="blockContainer"><div class="bn-block-content" data-content-type="paragraph"><p class="bn-inline-content">This is a blog about stuff.</p></div></div></div></div>',
   },
 ]

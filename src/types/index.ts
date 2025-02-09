@@ -61,6 +61,7 @@ export interface BlogPost {
   imageUrl: string
   slug: string
   author: string
+  html: string
 }
 
 export interface Image {

@@ -55,6 +55,7 @@ export default async function SandboxPage() {
                             author: post.author,
                             excerpt: post.excerpt,
                             content: post.content,
+                            html: post.html,
                             created_at: post.date,
                             updated_at: post.date,
                         }))

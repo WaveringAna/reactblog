@@ -4,6 +4,9 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { notFound } from "next/navigation"
 
+import "@blocknote/core/style.css";
+import "@blocknote/core/fonts/inter.css";
+
 interface PostPageProps {
     params: Promise<{
         postId: string
@@ -19,6 +22,8 @@ export default async function PostPage(props: PostPageProps) {
     if (!post) {
         notFound()
     }
+
+    const postHtml = post.html;
 
     return (
         <article className="container mx-auto px-4 py-16 max-w-4xl">
@@ -54,10 +59,16 @@ export default async function PostPage(props: PostPageProps) {
                 </div>
             </header>
 
-            <div className="prose prose-lg max-w-none">
+            {/* <div className="prose prose-lg max-w-none">
                 {/* For now, we'll just display the content directly. 
-            Later you might want to add markdown processing */}
+            Later you might want to add markdown processing
                 <p className="text-gray-600 leading-relaxed">{post.content}</p>
+            </div>*/}
+
+            <div className="bn-container">
+                <div className="bn-default-styles"
+                    dangerouslySetInnerHTML={{ __html: postHtml }}
+                />
             </div>
         </article>
     )

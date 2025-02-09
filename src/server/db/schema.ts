@@ -45,6 +45,7 @@ export const posts = createTable("posts", {
   excerpt: text("excerpt"),
   content: text("content"),
   author: text("author"),
+  html: text("html"),
   created_at: text("created_at").default(sql`CURRENT_TIMESTAMP`),
   updated_at: text("updated_at").default(sql`CURRENT_TIMESTAMP`),
 });
