@@ -78,6 +78,16 @@ export function Header({ author, socialLinks }: HeaderProps) {
             </SignedOut>
             <SignedIn>
               <UserButton />
+              <Link href="/admin"
+                className="text-gray-600 hover:text-primary font-medium transition-colors"
+              >
+                Admin
+              </Link>
+              <Link href="/editor"
+                className="text-gray-600 hover:text-primary font-medium transition-colors"
+              >
+                Editor
+              </Link>
             </SignedIn>
           </nav>
         </div>

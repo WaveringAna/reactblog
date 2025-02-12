@@ -1,3 +1,27 @@
+import type { NextResponse } from "next/server"
+
+export interface ImageResponse extends NextResponse {
+  success: boolean;
+  data?: {
+    imageUrl: string;
+  }
+  error?: string;
+}
+
+export interface PostResponse extends NextResponse {
+  success: boolean;
+  data?: {
+    title: string;
+    content: string;
+    excerpt: string;
+    author: string;
+    html: string;
+    created_at: string;
+    updated_at: string;
+  }
+  error?: string;
+}
+
 export interface MediaItem {
   id: string
   title: string

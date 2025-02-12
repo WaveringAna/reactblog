@@ -6,21 +6,7 @@ import { Editor } from "~/components/DynamicEditor";
 import Cover from "~/components/cover";
 import type { BlockNoteEditor } from "@blocknote/core";
 import { useRouter } from "next/navigation";
-import type { NextResponse } from "next/server";
-
-interface PostResponse extends NextResponse {
-    success: boolean;
-    data?: {
-        title: string;
-        content: string;
-        excerpt: string;
-        author: string;
-        html: string;
-        created_at: string;
-        updated_at: string;
-    }
-    error?: string;
-}
+import type { PostResponse } from "~/types";
 
 export default function PostCreatorPage() {
     const [title, setTitle] = useState("");
