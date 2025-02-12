@@ -6,15 +6,16 @@ import { NextResponse } from "next/server";
 interface PostRequest {
     title: string;
     content: string;
+    imageUrl: string;
 }
 
 export async function POST(request: Request) {
     try {
-        const { title, content } = (await request.json()) as PostRequest;
+        const { title, content, imageUrl } = (await request.json()) as PostRequest;
 
-        if (!title || !content) {
+        if (!title || !content || !imageUrl) {
             return NextResponse.json(
-                { error: "Title and content are required" },
+                { error: "Title and content and cover image are required" },
                 { status: 400 }
             );
         }
@@ -28,6 +29,7 @@ export async function POST(request: Request) {
             excerpt: plainText.slice(0, 100), // generate excerpt from text-only content
             author: "Aaman Lamba",
             html: content, // store the raw HTML
+            imageUrl,
             created_at: new Date().toDateString(),
             updated_at: new Date().toDateString(),
         });

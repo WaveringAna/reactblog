@@ -5,6 +5,7 @@ import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/shadcn";
 import type { DefaultBlockSchema, PartialBlock } from "@blocknote/core";
 import "@blocknote/shadcn/style.css";
+import type { NextResponse } from "next/server";
 
 interface EditorProps {
     onChange?: () => void;
@@ -13,7 +14,7 @@ interface EditorProps {
 
 const Editor = forwardRef((props: EditorProps, ref) => {
     const { initialContent, onChange } = props;
-    interface ImageUploadResponse {
+    interface ImageUploadResponse extends NextResponse {
         success: boolean;
         data: {
             imageUrl: string;

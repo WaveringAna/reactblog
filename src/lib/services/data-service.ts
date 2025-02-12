@@ -50,7 +50,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     excerpt: post.excerpt ?? '',
     content: post.content ?? '',
     date: post.created_at ?? '',
-    imageUrl: '',
+    imageUrl: post.imageUrl ?? '',
     slug: '',
     author: post.author ?? '',
     html: post.html ?? ''

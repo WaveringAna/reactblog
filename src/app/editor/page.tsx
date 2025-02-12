@@ -6,19 +6,26 @@ import { Editor } from "~/components/DynamicEditor";
 import Cover from "~/components/cover";
 import type { BlockNoteEditor } from "@blocknote/core";
 import { useRouter } from "next/navigation";
+import type { NextResponse } from "next/server";
 
-interface PostResponse {
+interface PostResponse extends NextResponse {
     success: boolean;
-    data?: string;
+    data?: {
+        title: string;
+        content: string;
+        excerpt: string;
+        author: string;
+        html: string;
+        created_at: string;
+        updated_at: string;
+    }
     error?: string;
 }
 
 export default function PostCreatorPage() {
     const [title, setTitle] = useState("");
     const [error, setError] = useState("");
-    const [coverUrl, setCoverUrl] = useState<string>(
-
-    )
+    const [coverUrl, setCoverUrl] = useState<string>();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const router = useRouter();
     const editorRef = useRef<BlockNoteEditor>(null);
@@ -41,7 +48,7 @@ export default function PostCreatorPage() {
             const response = await fetch("/api/posts", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ title, content: html }),
+                body: JSON.stringify({ title, content: html, imageUrl: coverUrl }),
             });
             const data = await response.json() as PostResponse;
             if (!response.ok) {
@@ -58,7 +65,7 @@ export default function PostCreatorPage() {
 
     return (
         <div className="max-w-4xl mx-auto p-6">
-            <Cover url="https://plus.unsplash.com/premium_photo-1676496046182-356a6a0ed002?q=80&w=3876&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+            <Cover setUrl={setCoverUrl} url={coverUrl} />
             {error && (
                 <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
                     {error}
